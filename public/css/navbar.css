@@ -197,3 +197,82 @@
 .nav-user-menu a:hover{
     background:#f8fafc;
 }
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 14px 18px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        background: white;
+        width: 230px;
+        padding: 20px;
+        border-radius: 18px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+
+        display: none;
+    }
+    /* ACTIVE MENU */
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+      .nav-links li a {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* USER DROPDOWN MOBILE */
+
+    .nav-user-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        padding: 8px 0;
+        margin-top: 10px;
+    }
+    .nav-user-dropdown:hover .nav-user-menu {
+        display: block;
+    }
+
+    /* ADMIN NAV */
+     .admin-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+     .admin-nav .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+     .admin-nav .links a {
+        margin-left: 0;
+    }
+}
+
