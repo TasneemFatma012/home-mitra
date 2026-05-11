@@ -1,0 +1,251 @@
+<% layout('layouts/boilerplate') %>
+
+<link rel="stylesheet" href="/css/bookings.css">
+
+<div class="ubk-page">
+
+    <!-- TOP -->
+    <div class="ubk-topbar">
+
+        <div>
+
+            <h1 class="ubk-title">
+
+                My Bookings
+
+            </h1>
+
+            <p class="ubk-subtitle">
+
+                Track all your booked services
+
+            </p>
+
+        </div>
+
+        <div class="ubk-count-box">
+
+            <span class="ubk-count-number">
+
+                <%= bookings.length %>
+
+            </span>
+
+            <span class="ubk-count-text">
+
+                Total Bookings
+
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- EMPTY -->
+    <% if(!bookings || bookings.length === 0){ %>
+
+        <div class="ubk-empty-card">
+
+            <div class="ubk-empty-icon">
+                📦
+            </div>
+
+            <h2>
+                No Bookings Yet
+            </h2>
+
+            <p>
+                Explore services and make your first booking
+            </p>
+
+            <a
+                href="/services"
+                class="ubk-explore-btn"
+            >
+                Explore Services
+            </a>
+
+        </div>
+
+    <% } %>
+
+    <!-- GRID -->
+    <div class="ubk-grid">
+
+        <% bookings.forEach(b => { %>
+
+            <% if (!b) return; %>
+
+            <div class="ubk-card">
+
+                <!-- STATUS BADGE -->
+                <div class="ubk-status-row">
+
+                    <div class="
+                        ubk-status-badge
+                        <%= b.status %>
+                    ">
+
+                        <% if(b.status === "pending"){ %>
+                            ⏳ Pending
+                        <% } %>
+
+                        <% if(b.status === "confirmed"){ %>
+                            ✅ Confirmed
+                        <% } %>
+
+                        <% if(b.status === "completed"){ %>
+                            🎉 Completed
+                        <% } %>
+
+                    </div>
+
+                    <div class="
+                        ubk-payment-badge
+                        <%= b.paymentStatus %>
+                    ">
+
+                        <% if(b.paymentStatus === "paid"){ %>
+                            💳 Paid
+                        <% } else { %>
+                            💰 Unpaid
+                        <% } %>
+
+                    </div>
+
+                </div>
+
+                <!-- TITLE -->
+                <h2 class="ubk-service-title">
+
+                    <%= b.name %>
+
+                </h2>
+
+                <!-- DETAILS -->
+                <div class="ubk-detail-list">
+
+                    <div class="ubk-detail-item">
+
+                        <span>
+                            Booking ID
+                        </span>
+
+                        <strong>
+                            #<%= b._id.slice(0,6) %>
+                        </strong>
+
+                    </div>
+
+                    <div class="ubk-detail-item">
+
+                        <span>
+                            Service ID
+                        </span>
+
+                        <strong>
+                            <%= b.serviceId %>
+                        </strong>
+
+                    </div>
+
+                    <% if(b.date){ %>
+
+                    <div class="ubk-detail-item">
+
+                        <span>
+                            Booking Date
+                        </span>
+
+                        <strong>
+                            <%= b.date %>
+                        </strong>
+
+                    </div>
+
+                    <% } %>
+
+                </div>
+
+                <!-- PROGRESS -->
+                <div class="ubk-progress-wrap">
+
+                    <div class="ubk-progress-line">
+
+                        <div
+                            class="
+                                ubk-progress-fill
+                                <%= b.status %>
+                            "
+                        ></div>
+
+                    </div>
+
+                </div>
+
+                <!-- ACTIONS -->
+
+                <div class="ubk-action-wrap">
+
+                    <!-- PENDING -->
+                    <% if (b.status === "pending") { %>
+
+                        <button
+                            disabled
+                            class="ubk-btn ubk-btn-pending"
+                        >
+
+                            Waiting for Admin Confirmation
+
+                        </button>
+
+                    <% } %>
+
+                    <!-- CONFIRMED -->
+                    <% if (
+                        b.status === "confirmed" &&
+                        b.paymentStatus === "unpaid"
+                    ) { %>
+
+                        <a
+                            href="/payment/<%= b._id %>"
+                            class="ubk-link-btn"
+                        >
+
+                            <button
+                                class="ubk-btn ubk-btn-pay"
+                            >
+
+                                Pay Now
+
+                            </button>
+
+                        </a>
+
+                    <% } %>
+
+                    <!-- PAID -->
+                    <% if (
+                        b.paymentStatus === "paid"
+                    ) { %>
+
+                        <button
+                            disabled
+                            class="ubk-btn ubk-btn-paid"
+                        >
+
+                            ✔ Access Unlocked
+
+                        </button>
+
+                    <% } %>
+
+                </div>
+
+            </div>
+
+        <% }) %>
+
+    </div>
+
+</div>

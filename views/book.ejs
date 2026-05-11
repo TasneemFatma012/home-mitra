@@ -1,0 +1,610 @@
+<% layout('layouts/boilerplate') %>
+
+<link rel="stylesheet" href="/css/book.css">
+
+<div class="lsb-page">
+
+    <!-- LEFT -->
+    <div class="lsb-service-card">
+
+        <!-- IMAGE -->
+        <div class="lsb-image-box">
+
+            <% if(service.image) { %>
+
+                <img
+                    src="<%= service.image %>"
+                    alt="service image"
+                    class="lsb-image"
+                >
+
+            <% } else { %>
+
+                <div class="lsb-no-image">
+
+                    ⚡ No Image Available
+
+                </div>
+
+            <% } %>
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="lsb-content">
+
+            <!-- CATEGORY -->
+            <div class="lsb-category">
+
+                📌 <%= service.category %>
+
+            </div>
+
+            <!-- TITLE -->
+            <h1 class="lsb-title">
+
+                <%= service.title %>
+
+            </h1>
+
+            <!-- DESCRIPTION -->
+            <p class="lsb-description">
+
+                <%= service.description ||
+                "No description available" %>
+
+            </p>
+
+            <!-- META -->
+            <div class="lsb-meta-wrap">
+
+                <div class="lsb-meta-card">
+
+                    💰 ₹ <%= service.price %>
+
+                </div>
+
+                <div class="lsb-meta-card">
+
+                    ⭐ <%= service.rating || 4.5 %>
+
+                </div>
+
+                <div class="lsb-meta-card">
+
+                    ⚡ Instant Booking
+
+                </div>
+
+            </div>
+
+            <!-- FEATURES -->
+            <div class="lsb-feature-list">
+
+                <div class="lsb-feature-item">
+                    ✔ Verified Professional
+                </div>
+
+                <div class="lsb-feature-item">
+                    ⚡ Fast Service
+                </div>
+
+                <div class="lsb-feature-item">
+                    🔒 Secure Booking
+                </div>
+
+                <div class="lsb-feature-item">
+                    🕒 24/7 Support
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="lsb-form-card">
+
+        <!-- TOP -->
+        <div class="lsb-form-top">
+
+            <h2 class="lsb-form-title">
+
+                Book This Service
+
+            </h2>
+
+            <p class="lsb-form-subtitle">
+
+                Fill your details to confirm booking
+
+            </p>
+
+        </div>
+
+        <!-- FORM -->
+        <form
+            action="/book/<%= service._id %>"
+            method="POST"
+            class="lsb-form"
+        >
+
+            <!-- NAME -->
+            <div class="lsb-input-group">
+
+                <label class="lsb-label">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                    class="lsb-input"
+                >
+
+            </div>
+
+            <!-- EMAIL -->
+            <div class="lsb-input-group">
+
+                <label class="lsb-label">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter email"
+                    class="lsb-input"
+                >
+
+            </div>
+
+            <!-- PHONE -->
+            <div class="lsb-input-group">
+
+                <label class="lsb-label">
+                    Phone Number
+                </label>
+
+                <input
+                    type="text"
+                    name="phone"
+                    placeholder="Enter phone number"
+                    required
+                    class="lsb-input"
+                >
+
+            </div>
+
+            <!-- DATE -->
+            <div class="lsb-input-group">
+
+                <label class="lsb-label">
+                    Booking Date
+                </label>
+
+                <input
+                    type="date"
+                    name="date"
+                    required
+                    class="lsb-input"
+                >
+
+            </div>
+
+            <!-- TIME -->
+            <div class="lsb-input-group">
+
+                <label class="lsb-label">
+                    Preferred Time
+                </label>
+
+                <input
+                    type="time"
+                    name="time"
+                    class="lsb-input"
+                >
+
+            </div>
+
+            <!-- PRIORITY -->
+            <div class="lsb-input-group">
+
+                <label class="lsb-label">
+                    Service Priority
+                </label>
+
+                <select
+                    name="priority"
+                    class="lsb-input"
+                >
+
+                    <option value="Normal">
+                        Normal
+                    </option>
+
+                    <option value="Urgent">
+                        Urgent
+                    </option>
+
+                    <option value="VIP">
+                        VIP Priority
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- SERVICE TYPE -->
+            <div class="lsb-input-group">
+
+                <label class="lsb-label">
+                    Service Type
+                </label>
+
+                <select
+                    name="serviceMode"
+                    class="lsb-input"
+                >
+
+                    <option value="Home Visit">
+                        Home Visit
+                    </option>
+
+                    <option value="Online Consultation">
+                        Online Consultation
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- SLOT -->
+            <div class="lsb-input-group">
+
+                <label class="lsb-label">
+                    Preferred Slot
+                </label>
+
+                <select
+                    name="slot"
+                    class="lsb-input"
+                >
+
+                    <option>
+                        Morning (8AM - 12PM)
+                    </option>
+
+                    <option>
+                        Afternoon (12PM - 4PM)
+                    </option>
+
+                    <option>
+                        Evening (4PM - 8PM)
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- ADDRESS -->
+            <div class="lsb-input-group">
+
+                <label class="lsb-label">
+                    Address
+                </label>
+
+                <textarea
+                    name="address"
+                    placeholder="Enter full address"
+                    required
+                    class="lsb-textarea"
+                ></textarea>
+
+            </div>
+
+            <!-- PAYMENT -->
+            <div class="lsb-input-group">
+
+                <label class="lsb-label">
+                    Payment Method
+                </label>
+
+                <select
+                    name="paymentMethod"
+                    class="lsb-input"
+                >
+
+                    <option value="Cash">
+                        Cash
+                    </option>
+
+                    <option value="UPI">
+                        UPI
+                    </option>
+
+                    <option value="Card">
+                        Card
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- ADDONS -->
+            <div class="lsb-extra-section">
+
+                <h3 class="lsb-extra-title">
+
+                    Add-on Services
+
+                </h3>
+
+                <div class="lsb-addon-grid">
+
+                    <label class="lsb-addon-card">
+
+                        <input
+                            type="checkbox"
+                            name="addons"
+                            value="Express Service"
+                        >
+
+                        <span>
+                            ⚡ Express Service
+                        </span>
+
+                    </label>
+
+                    <label class="lsb-addon-card">
+
+                        <input
+                            type="checkbox"
+                            name="addons"
+                            value="Premium Support"
+                        >
+
+                        <span>
+                            👑 Premium Support
+                        </span>
+
+                    </label>
+
+                    <label class="lsb-addon-card">
+
+                        <input
+                            type="checkbox"
+                            name="addons"
+                            value="Extended Warranty"
+                        >
+
+                        <span>
+                            🛡 Extended Warranty
+                        </span>
+
+                    </label>
+
+                    <label class="lsb-addon-card">
+
+                        <input
+                            type="checkbox"
+                            name="addons"
+                            value="Extra Cleaning"
+                        >
+
+                        <span>
+                            🧹 Extra Cleaning
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- EMERGENCY -->
+            <div class="lsb-check-group">
+
+                <input
+                    type="checkbox"
+                    name="emergency"
+                    value="Yes"
+                >
+
+                <label>
+                    Need emergency service
+                </label>
+
+            </div>
+
+            <!-- NOTES -->
+            <div class="lsb-input-group">
+
+                <label class="lsb-label">
+                    Additional Notes
+                </label>
+
+                <textarea
+                    name="notes"
+                    placeholder="Extra instructions..."
+                    class="lsb-textarea"
+                ></textarea>
+
+            </div>
+
+            <!-- LOCATION -->
+            <div class="lsb-extra-section">
+
+                <h3 class="lsb-extra-title">
+
+                    Live Location
+
+                </h3>
+
+                <button
+                    type="button"
+                    class="lsb-location-btn"
+                    onclick="getLocation()"
+                >
+
+                    📍 Use Current Location
+
+                </button>
+
+                <input
+                    type="hidden"
+                    name="latitude"
+                    id="lsb-lat"
+                >
+
+                <input
+                    type="hidden"
+                    name="longitude"
+                    id="lsb-lng"
+                >
+
+                <p
+                    class="lsb-location-text"
+                    id="lsb-location-status"
+                >
+
+                    Location not selected
+
+                </p>
+
+            </div>
+
+            <!-- COUPON -->
+            <div class="lsb-extra-section">
+
+                <h3 class="lsb-extra-title">
+
+                    Coupon Code
+
+                </h3>
+
+                <div class="lsb-coupon-box">
+
+                    <input
+                        type="text"
+                        name="coupon"
+                        placeholder="Enter coupon code"
+                        class="lsb-input"
+                    >
+
+                    <button
+                        type="button"
+                        class="lsb-apply-btn"
+                    >
+
+                        Apply
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- TERMS -->
+            <div class="lsb-check-group">
+
+                <input
+                    type="checkbox"
+                    required
+                >
+
+                <label>
+                    I agree to terms & conditions
+                </label>
+
+            </div>
+
+            <!-- SUMMARY -->
+            <div class="lsb-summary-card">
+
+                <div class="lsb-summary-row">
+
+                    <span>
+                        Service Charge
+                    </span>
+
+                    <span>
+                        ₹ <%= service.price %>
+                    </span>
+
+                </div>
+
+                <div class="lsb-summary-row">
+
+                    <span>
+                        Platform Fee
+                    </span>
+
+                    <span>
+                        ₹ 49
+                    </span>
+
+                </div>
+
+                <div class="lsb-summary-total">
+
+                    <span>
+                        Total Amount
+                    </span>
+
+                    <span>
+                        ₹ <%= service.price + 49 %>
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- BUTTON -->
+            <button
+                type="submit"
+                class="lsb-submit-btn"
+            >
+
+                Confirm Booking
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script id="h7x2kr">
+function getLocation(){
+
+    if(navigator.geolocation){
+
+        navigator.geolocation.getCurrentPosition(
+
+            (position)=>{
+
+                document.getElementById("lsb-lat").value =
+                    position.coords.latitude;
+
+                document.getElementById("lsb-lng").value =
+                    position.coords.longitude;
+
+                document.getElementById(
+                    "lsb-location-status"
+                ).innerText =
+                    "Location Added Successfully";
+
+            }
+
+        );
+
+    }
+
+}
+</script>

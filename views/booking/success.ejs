@@ -1,0 +1,71 @@
+<% layout('layouts/boilerplate') %>
+
+<link rel="stylesheet" href="/css/success.css">
+
+<div class="success-container">
+
+    <!-- STATUS ICON -->
+    <div class="checkmark">
+
+        <% if(booking.status === "confirmed") { %>
+            ✅
+        <% } else if(booking.status === "pending") { %>
+            ⏳
+        <% } else { %>
+            📦
+        <% } %>
+
+    </div>
+
+    <!-- DYNAMIC TITLE -->
+    <h1>
+        <% if(booking.status === "confirmed") { %>
+            Booking Confirmed!
+        <% } else { %>
+            Booking Received!
+        <% } %>
+    </h1>
+
+    <p class="msg">
+        <% if(booking.status === "pending") { %>
+            Your request is under review.
+        <% } else if(booking.status === "confirmed") { %>
+            Your service has been confirmed.
+        <% } else { %>
+            We are processing your booking.
+        <% } %>
+    </p>
+
+    <!-- DETAILS CARD -->
+    <div class="card">
+
+        <h2>📄 Booking Details</h2>
+
+        <p><b>Name:</b> <%= booking.name %></p>
+        <p><b>Phone:</b> <%= booking.phone %></p>
+        <p><b>Date:</b> <%= booking.date %></p>
+        <p><b>Address:</b> <%= booking.address %></p>
+
+        <p>
+            <b>Status:</b>
+            <span class="status <%= booking.status %>">
+                <%= booking.status %>
+            </span>
+        </p>
+
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="actions">
+
+        <a href="/services" class="btn">⬅ Back to Services</a>
+
+        <% if(booking.status === "confirmed") { %>
+            <a href="/payment/<%= booking._id %>" class="btn pay">
+                💳 Pay Now
+            </a>
+        <% } %>
+
+    </div>
+
+</div>

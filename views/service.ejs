@@ -1,0 +1,41 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="services-page">
+
+    <h1 class="services-title">All Services</h1>
+
+    <div class="services-grid">
+
+        <% services.forEach(service => { %>
+
+            <div class="service-card">
+
+                <div class="service-card__icon">
+                    <i class="fa-solid <%= service.icon %>"></i>
+                </div>
+
+                <h3 class="service-card__title"><%= service.title %></h3>
+
+                <p class="service-card__category"><%= service.category %></p>
+
+                <p class="service-card__price">
+                    ₹ <%= Number(service.price).toLocaleString("en-IN") %>
+                </p>
+
+                <div class="service-card__actions">
+                    <a href="/services/<%= service._id %>" class="btn-outline">
+                        View Details
+                    </a>
+
+                    <a href="/book/<%= service._id %>" class="btn-primary">
+                        Book Now
+                    </a>
+                </div>
+
+            </div>
+
+        <% }) %>
+
+    </div>
+
+</div>

@@ -1,0 +1,370 @@
+/* =========================
+   GLOBAL
+========================= */
+
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial, sans-serif;
+    background:#f5f7fb;
+    color:#222;
+}
+
+a{
+    text-decoration:none;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.home-hero{
+    text-align:center;
+    padding:80px 20px;
+    background:linear-gradient(135deg,#2563eb,#1e40af);
+    color:white;
+}
+
+.home-hero__title{
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+.home-hero__subtitle{
+    font-size:18px;
+    margin-bottom:30px;
+    opacity:0.9;
+}
+
+.home-hero__btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:14px 28px;
+    background:white;
+    color:#2563eb;
+    border-radius:10px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.home-hero__btn:hover{
+    background:#e5e7eb;
+}
+
+/* =========================
+   SEARCH BAR
+========================= */
+
+.home-search{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+.home-search input{
+    width:350px;
+    max-width:90%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    outline:none;
+}
+
+.home-search button{
+    padding:14px 22px;
+    border:none;
+    border-radius:10px;
+    background:#111827;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.home-search button:hover{
+    background:black;
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.home-section__title{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:35px;
+    color:#111827;
+}
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.home-categories-section{
+    padding:60px 20px;
+}
+
+.home-categories{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.home-categories a{
+    background:white;
+    padding:14px 24px;
+    border-radius:12px;
+    color:#111827;
+    font-weight:600;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.home-categories a:hover{
+    transform:translateY(-3px);
+    background:#2563eb;
+    color:white;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.home-container{
+    padding:60px 20px;
+}
+
+.home-card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.home-card{
+    background:white;
+    border-radius:18px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.home-card:hover{
+    transform:translateY(-5px);
+}
+
+.home-card__icon{
+    font-size:40px;
+    color:#2563eb;
+    margin-bottom:15px;
+}
+
+.home-card__title{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.home-card__category{
+    color:#6b7280;
+    margin-bottom:10px;
+}
+
+.home-card__price{
+    font-size:24px;
+    font-weight:bold;
+    color:#111827;
+    margin-bottom:10px;
+}
+
+.home-card__rating{
+    margin-bottom:20px;
+    color:#f59e0b;
+    font-weight:bold;
+}
+
+.home-card__btn{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    transition:0.3s;
+}
+
+.home-card__btn:hover{
+    background:#1d4ed8;
+}
+
+.home-card__btn--login{
+    background:#111827;
+}
+
+.home-card__btn--login:hover{
+    background:black;
+}
+
+/* =========================
+   WHY CHOOSE US
+========================= */
+
+.why-us{
+    padding:70px 20px;
+    background:white;
+}
+
+.why-us-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.why-card{
+    text-align:center;
+    padding:35px 25px;
+    border-radius:18px;
+    background:#f9fafb;
+    transition:0.3s;
+}
+
+.why-card:hover{
+    transform:translateY(-5px);
+}
+
+.why-card i{
+    font-size:40px;
+    color:#2563eb;
+    margin-bottom:15px;
+}
+
+.why-card h3{
+    margin-bottom:12px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.home-stats{
+    padding:70px 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.stats-card{
+    background:#2563eb;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+    border-radius:18px;
+}
+
+.stats-card h2{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+/* =========================
+   TESTIMONIALS
+========================= */
+
+.testimonials{
+    padding:70px 20px;
+    background:white;
+}
+
+.testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.testimonial-card{
+    background:#f9fafb;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+.testimonial-card p{
+    font-style:italic;
+    margin-bottom:20px;
+}
+
+/* =========================
+   OFFER BANNER
+========================= */
+
+.offer-banner{
+    margin:70px 20px;
+    background:linear-gradient(135deg,#f59e0b,#ea580c);
+    color:white;
+    text-align:center;
+    padding:45px 20px;
+    border-radius:20px;
+}
+
+.offer-banner h2{
+    margin:0;
+    font-size:32px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    background:#111827;
+    color:white;
+    padding:50px 20px;
+    margin-top:60px;
+}
+
+.footer-content{
+    max-width:1200px;
+    margin:auto;
+    text-align:center;
+}
+
+.footer-links{
+    margin:25px 0;
+}
+
+.footer-links a{
+    color:white;
+    margin:0 12px;
+    transition:0.3s;
+}
+
+.footer-links a:hover{
+    color:#60a5fa;
+}
+
+.footer-copy{
+    opacity:0.7;
+    margin-top:20px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    .home-hero__title{
+        font-size:36px;
+    }
+
+    .home-section__title{
+        font-size:26px;
+    }
+
+    .offer-banner h2{
+        font-size:24px;
+    }
+
+}

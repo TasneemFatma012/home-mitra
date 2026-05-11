@@ -1,0 +1,308 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="ls-body">
+
+    <!-- HERO -->
+    <section class="ls-hero">
+
+        <div class="ls-hero-content">
+
+            <h1 class="ls-hero-title">
+                Find Trusted Local Services
+            </h1>
+
+            <p class="ls-hero-subtitle">
+                Book professionals near you instantly
+            </p>
+
+            <!-- SEARCH -->
+            <form
+                class="ls-search-form"
+                method="GET"
+                action="/services"
+            >
+
+                <input
+                    type="text"
+                    name="q"
+                    class="ls-search-input"
+                    placeholder="Search electricians, cleaners..."
+                    value="<%= searchQuery %>"
+                >
+
+                <button
+                    type="submit"
+                    class="ls-search-btn"
+                >
+                    Search
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- CATEGORY -->
+    <div class="ls-category-wrap">
+
+        <a
+            href="/services"
+            class="ls-category-link"
+        >
+            All
+        </a>
+
+        <a
+            href="/services?category=Home Repair"
+            class="ls-category-link"
+        >
+            🔧 Home Repair
+        </a>
+
+        <a
+            href="/services?category=Cleaning"
+            class="ls-category-link"
+        >
+            🧹 Cleaning
+        </a>
+
+        <a
+            href="/services?category=IT Service"
+            class="ls-category-link"
+        >
+            💻 IT Service
+        </a>
+
+        <a
+            href="/services?category=Fitness"
+            class="ls-category-link"
+        >
+            🏋️ Fitness
+        </a>
+
+        <a
+            href="/services?category=Security"
+            class="ls-category-link"
+        >
+            🛡️ Security
+        </a>
+
+        <a
+            href="/services?category=Appliance"
+            class="ls-category-link"
+        >
+            ⚡ Appliance
+        </a>
+
+        <a
+            href="/services?category=Wood Work"
+            class="ls-category-link"
+        >
+            🪵 Wood Work
+        </a>
+
+    </div>
+
+    <!-- MAIN -->
+    <div class="ls-main-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="ls-sidebar">
+
+            <!-- FILTER -->
+            <form
+                method="GET"
+                action="/services"
+                class="ls-filter-card"
+            >
+
+                <h2 class="ls-filter-title">
+                    🔍 Filters
+                </h2>
+
+                <!-- PRICE -->
+                <div class="ls-filter-group">
+
+                    <label class="ls-filter-label">
+                        💰 Price Range
+                    </label>
+
+                    <input
+                        type="range"
+                        name="maxPrice"
+                        min="100"
+                        max="<%= highestPrice %>"
+                        value="<%= maxPrice %>"
+                        id="priceRange"
+                        class="ls-filter-range"
+                    >
+
+                    <div class="ls-price-value">
+
+                        ₹
+                        <span id="priceOutput">
+                            <%= maxPrice %>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- RATING -->
+                <div class="ls-filter-group">
+
+                    <label class="ls-filter-label">
+                        ⭐ Rating
+                    </label>
+
+                    <select
+                        name="rating"
+                        class="ls-filter-select"
+                    >
+
+                        <option value=""  <%= rating === 0 ? "selected" : "" %>>
+                            All Ratings
+                        </option>
+
+                        <option value="4"  <%= rating === 4 ? "selected" : "" %>>
+                            4+ ⭐
+                        </option>
+
+                        <option value="3"  <%= rating === 3 ? "selected" : "" %>>
+                            3+ ⭐
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="ls-filter-btn"
+                >
+                    Apply Filters
+                </button>
+
+            </form>
+
+            <!-- MAP -->
+            <div class="ls-map-card">
+
+                <div
+                    id="map"
+                    class="ls-map"
+                ></div>
+
+                <div
+                    id="route-info"
+                    class="route-info-box"
+                ></div>
+
+            </div>
+
+        </aside>
+
+        <!-- SERVICES -->
+        <section class="ls-services-grid">
+
+            <% services.forEach(service => { %>
+
+                <div class="ls-service-card">
+
+                    <!-- BADGE -->
+                    <% if(service.rating >= 4.5){ %>
+
+                        <div class="ls-top-rated-badge">
+                            🏆 Top Rated
+                        </div>
+
+                    <% } %>
+
+                    <!-- HEADER -->
+                    <div class="ls-card-header">
+
+                        <span class="ls-price-tag">
+
+                            ₹ <%= service.price %>
+
+                        </span>
+
+                        <span class="ls-rating-badge">
+
+                            ⭐ <%= service.rating %>
+
+                        </span>
+
+                    </div>
+
+                    <!-- TITLE -->
+                    <h3 class="ls-service-title">
+
+                        <%= service.title %>
+
+                    </h3>
+
+                    <!-- CATEGORY -->
+                    <p class="ls-service-category">
+
+                        <%= service.category %>
+
+                    </p>
+
+                    <!-- META -->
+                    <div class="ls-meta-box">
+
+                        <p class="ls-distance">
+
+                        
+
+                            📍 Detecting distance...  <%= service.distance %>
+
+                        </p>
+
+                        <p
+                            class="ls-time" >
+                           
+                        
+
+                            ⏱ Calculating ETA... <%= service.eta %>
+
+                        </p>
+
+                    </div>
+
+                    <!-- ACTIONS -->
+                    <div class="ls-card-actions">
+
+                        <a
+                            href="/services/<%= service._id %>"
+                            class="ls-view-btn"
+                        >
+                            View
+                        </a>
+
+                        <a
+                            href="/book/<%= service._id %>"
+                            class="ls-book-btn"
+                        >
+                            Book Now
+                        </a>
+
+                    </div>
+
+                </div>
+
+            <% }) %>
+
+        </section>
+
+    </div>
+
+</div>
+
+<!-- MAPBOX -->
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+<script src="/js/map.js"></script>
+
+<script src="/js/filter.js"></script>

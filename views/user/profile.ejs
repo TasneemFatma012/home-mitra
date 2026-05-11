@@ -1,0 +1,188 @@
+<% layout('layouts/boilerplate') %>
+<div class="upf-page">
+
+    <!-- LEFT -->
+    <div class="upf-sidebar-card">
+
+        <div class="upf-avatar-wrap">
+
+            <div class="upf-avatar">
+                <%= user.name.charAt(0) %>
+
+            </div>
+
+            <h2 class="upf-user-name">
+
+                <%= user.name %>
+                </h2>
+
+            <p class="upf-user-role">
+
+                <%= user.role || "User" %>
+
+            </p>
+             </div>
+
+        <div class="upf-stats-grid">
+
+            <div class="upf-stat-card">
+                <h3>
+                    Active
+                </h3>
+
+                <p>
+                    Member
+                </p>
+
+            </div>
+            <div class="upf-stat-card">
+
+                <h3>
+                    Secure
+                </h3>
+
+                <p>
+                    Account
+                </p>
+
+            </div>
+            </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="upf-form-card">
+
+        <div class="upf-top">
+
+            <h1 class="upf-title">
+
+                My Profile
+
+                 </h1>
+
+            <p class="upf-subtitle">
+
+                Manage your personal information
+
+            </p>
+             </div>
+
+        <form
+            action="/user/profile/update"
+            method="POST"
+            class="upf-form"
+        >
+
+            <!-- NAME -->
+            <div class="upf-input-group">
+
+                <label class="upf-label">
+                    Full Name
+                    </label>
+
+                <input
+                    type="text"
+                    name="name"
+                    value="<%= user.name || '' %>"
+                    class="upf-input"
+                >
+
+            </div>
+
+            <!-- EMAIL -->
+            <div class="upf-input-group">
+                 <label class="upf-label">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    value="<%= user.email || '' %>"
+                    class="upf-input"
+                >
+
+            </div>
+            <!-- PHONE -->
+            <div class="upf-input-group">
+
+                <label class="upf-label">
+                    Phone Number
+                </label>
+
+                <input
+                    type="text"
+                    name="phone"
+                    value="<%= user.phone || '' %>"
+                    class="upf-input"
+                >
+                 </div>
+
+            <!-- CITY -->
+            <div class="upf-input-group">
+
+                <label class="upf-label">
+                    City
+                </label>
+
+                <input
+                    type="text"
+                    name="city"
+                    value="<%= user.city || '' %>"
+                    class="upf-input"
+                     >
+
+            </div>
+
+            <!-- ADDRESS -->
+            <div class="upf-input-group">
+
+                <label class="upf-label">
+                    Address
+                </label>
+
+                <textarea
+                    name="address"
+                    class="upf-textarea"
+                ><%= user.address || '' %></textarea>
+
+            </div>
+
+            <!-- BIO -->
+            <div class="upf-input-group">
+                 <label class="upf-label">
+                    Bio
+                </label>
+
+                <textarea
+                    name="bio"
+                    class="upf-textarea"
+                ><%= user.bio || '' %></textarea>
+
+            </div>
+
+            <!-- BUTTON -->
+            <button
+                type="submit"
+                class="upf-save-btn"
+            >
+
+                Save Changes
+
+            </button>
+
+             </form>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+                

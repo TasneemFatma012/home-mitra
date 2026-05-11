@@ -1,0 +1,262 @@
+<!-- ========= HOME MITRA LIGHT BLUE CHATBOT ========= -->
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+  body{
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* =========================
+     Floating Chat Button
+  ========================= */
+
+  .WACLauncher__Button{
+
+    width: 70px !important;
+    height: 70px !important;
+
+    border-radius: 50% !important;
+
+    background:
+      linear-gradient(135deg,#38bdf8,#2563eb,#ffffff) !important;
+
+    box-shadow:
+      0 8px 25px rgba(37,99,235,0.35) !important;
+
+    transition: all 0.3s ease !important;
+  }
+
+  .WACLauncher__Button:hover{
+    transform: scale(1.1);
+  }
+
+  /* =========================
+     Chat Container
+  ========================= */
+
+  .WAC__chatContainer{
+
+    border-radius: 26px !important;
+
+    overflow: hidden !important;
+
+    background:
+      rgba(255,255,255,0.92) !important;
+
+    backdrop-filter: blur(10px);
+
+    border:
+      1px solid rgba(56,189,248,0.2);
+
+    box-shadow:
+      0 15px 40px rgba(37,99,235,0.15) !important;
+  }
+
+  /* =========================
+     Header
+  ========================= */
+
+  .WAC__header{
+
+    background:
+      linear-gradient(135deg,#38bdf8,#60a5fa,#ffffff) !important;
+
+    color: #0f172a !important;
+
+    font-weight: 600 !important;
+
+    padding: 18px !important;
+  }
+
+  /* =========================
+     Main Background
+  ========================= */
+
+  .WAC__messages{
+
+    background:
+
+      radial-gradient(circle at top left,
+      rgba(56,189,248,0.18),
+      transparent 30%),
+
+      radial-gradient(circle at bottom right,
+      rgba(96,165,250,0.15),
+      transparent 30%),
+
+      linear-gradient(135deg,
+      #ffffff,
+      #f0f9ff,
+      #dbeafe) !important;
+  }
+
+  /* =========================
+     Bot Messages
+  ========================= */
+
+  .WAC__received{
+
+    background:
+      rgba(255,255,255,0.95) !important;
+
+    color: #0f172a !important;
+
+    border:
+      1px solid rgba(56,189,248,0.18);
+
+    border-radius: 18px !important;
+
+    padding: 12px 16px !important;
+
+    box-shadow:
+      0 4px 12px rgba(0,0,0,0.06);
+  }
+
+  /* =========================
+     User Messages
+  ========================= */
+
+  .WAC__sent{
+
+    background:
+      linear-gradient(135deg,#38bdf8,#2563eb) !important;
+
+    color: white !important;
+
+    border-radius: 18px !important;
+
+    padding: 12px 16px !important;
+
+    box-shadow:
+      0 5px 15px rgba(37,99,235,0.2);
+  }
+
+  /* =========================
+     Footer
+  ========================= */
+
+  .WAC__footer{
+
+    background:
+      rgba(255,255,255,0.95) !important;
+
+    border-top:
+      1px solid rgba(56,189,248,0.15);
+  }
+
+  /* =========================
+     Input Box
+  ========================= */
+
+  .WAC__inputContainer{
+
+    background:
+      rgba(219,234,254,0.45) !important;
+
+    border-radius: 18px !important;
+  }
+
+  /* =========================
+     Send Button
+  ========================= */
+
+  .WAC__send-button{
+
+    background:
+      linear-gradient(135deg,#38bdf8,#2563eb) !important;
+
+    border-radius: 50% !important;
+
+    transition: all 0.3s ease;
+  }
+
+  .WAC__send-button:hover{
+    transform: scale(1.1);
+  }
+
+ 
+
+  ::-webkit-scrollbar{
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb{
+
+    background:
+      linear-gradient(#38bdf8,#2563eb);
+
+    border-radius: 20px;
+  }
+
+</style>
+
+<script>
+
+window.watsonAssistantChatOptions = {
+
+  integrationID: "bd762723-4d75-4033-a135-b72fd7d5597c",
+
+  region: "au-syd",
+
+  serviceInstanceID: "0f6c1714-215f-4a3f-b313-6fbbca7ae614",
+
+  onLoad: async (instance) => {
+
+    await instance.render();
+
+    instance.updateCSSVariables({
+
+      'BASE-font-family': "'Poppins', sans-serif",
+
+      'BASE-primary-color': '#38bdf8',
+
+      'BASE-secondary-color': '#60a5fa',
+
+      'BASE-accent-color': '#2563eb',
+
+      'BASE-border-radius-large': '24px',
+
+      'BASE-border-radius-medium': '18px',
+
+      'BASE-z-index': '9999'
+    });
+  }
+};
+
+setTimeout(function () {
+
+  const t = document.createElement('script');
+
+  t.src =
+    "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
+    (window.watsonAssistantChatOptions.clientVersion || 'latest') +
+    "/WatsonAssistantChatEntry.js";
+
+  document.head.appendChild(t);
+
+});
+
+
+async function searchServices(query) {
+
+    try {
+
+        const res = await fetch(`/api/chatbot/search?q=${query}`);
+
+        const data = await res.json();
+
+        console.log("CHATBOT SERVICES:", data);
+
+        return data.services;
+
+    } catch (err) {
+
+        console.log(err);
+    }
+}
+
+
+
+</script>

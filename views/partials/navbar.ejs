@@ -1,0 +1,181 @@
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <!-- LOGO -->
+        <div class="logo">
+
+            🏠 HomeAssist
+
+        </div>
+
+        <!-- NAV LINKS -->
+        <ul class="nav-links">
+
+            <li>
+
+                <a href="/">
+
+                    Home
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a
+                    href="/about"
+                    class="nav-link"
+                >
+
+                    About
+
+                </a>
+
+            </li>
+
+            <!-- SERVICES -->
+            <li>
+
+                <a href="/services">
+
+                    Services
+
+                </a>
+
+            </li>
+
+            <!-- NOT LOGGED IN -->
+            <% if (!currentUser) { %>
+
+                <li>
+
+                    <a href="/auth/login">
+
+                        Login
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a
+                        href="/auth/register"
+                        class="nav-register-btn"
+                    >
+
+                        Register
+
+                    </a>
+
+                </li>
+
+            <% } else { %>
+
+                <!-- NOTIFICATION -->
+                <li>
+
+                    <a
+                        href="/user/notifications"
+                        class="nav-notification"
+                    >
+
+                        🔔 Notifications
+
+                    </a>
+
+                </li>
+
+                <!-- USER DROPDOWN -->
+                <li class="nav-user-dropdown">
+
+                    <div class="nav-user-toggle">
+
+                        👤
+                        <%= currentUser.name %>
+
+                        ⌄
+
+                    </div>
+
+                    <!-- DROPDOWN -->
+                    <div class="nav-user-menu">
+
+                        <!-- ADMIN -->
+                        <% if(
+                            currentUser.role === "admin"
+                        ) { %>
+
+                            <a
+                                href="/admin/dashboard"
+                            >
+
+                                📊 Admin Dashboard
+
+                            </a>
+
+                            
+                            <
+
+                        <% } else { %>
+
+                            <!-- USER -->
+                            <a
+                                href="/user/dashboard"
+                            >
+
+                                👤 My Dashboard
+
+                            </a>
+
+                            <a
+                                href="/user/notifications"
+                            >
+
+                                🔔 Notifications
+
+                            </a>
+
+                            <a
+                                href="/user/profile"
+                            >
+
+                                ⚙ Profile
+
+                            </a>
+                            <% if (lastBookingId) { %>
+                                <a class="dropdown-item" href="/payment/receipt/<%= lastBookingId %>">
+                                       📄 Receipt
+                                 </a>
+                           <% } else { %>
+                                <a class="dropdown-item disabled" href="#">
+                                      📄 Receipt (No recent payment)
+                                </a>
+                           <% } %>
+
+
+                        <% } %>
+
+                        <!-- COMMON -->
+                        <a
+                            href="/auth/logout"
+                            class="nav-logout-link"
+                        >
+
+                            🚪 Logout
+
+                        </a>
+
+                    </div>
+
+                </li>
+
+            <% } %>
+
+        </ul>
+
+    </div>
+
+</nav>

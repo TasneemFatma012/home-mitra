@@ -1,0 +1,458 @@
+/* =========================
+   ADMIN DASHBOARD UI
+========================= */
+
+.adb-page{
+    min-height:100vh;
+    padding:40px 5%;
+    background:#f4f7fb;
+}
+
+/* TOPBAR */
+
+.adb-topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:35px;
+}
+
+.adb-title{
+    font-size:42px;
+    color:#0f172a;
+    margin-bottom:8px;
+}
+
+.adb-subtitle{
+    color:#64748b;
+    font-size:15px;
+}
+
+.adb-live-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    background:white;
+
+    padding:14px 18px;
+
+    border-radius:18px;
+
+    font-weight:600;
+
+    box-shadow:
+    0 8px 24px rgba(0,0,0,.05);
+}
+
+.adb-live-dot{
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+}
+
+/* STATS */
+
+.adb-stats-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(240px,1fr));
+
+    gap:24px;
+
+    margin-bottom:40px;
+}
+
+.adb-stat-card{
+    background:white;
+
+    border-radius:28px;
+
+    padding:28px;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.05);
+}
+
+.adb-stat-icon{
+    width:70px;
+    height:70px;
+
+    border-radius:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+}
+
+.adb-stat-card h2{
+    font-size:34px;
+    color:#0f172a;
+}
+
+.adb-stat-card p{
+    color:#64748b;
+    margin-top:4px;
+}
+
+/* COLORS */
+
+.adb-total .adb-stat-icon{
+    background:#dbeafe;
+}
+
+.adb-pending .adb-stat-icon{
+    background:#fef3c7;
+}
+
+.adb-confirmed .adb-stat-icon{
+    background:#dcfce7;
+}
+
+.adb-completed .adb-stat-icon{
+    background:#ede9fe;
+}
+
+/* SECTION */
+
+.adb-section-top{
+    margin-bottom:24px;
+}
+
+.adb-section-title{
+    font-size:30px;
+    color:#0f172a;
+}
+
+/* GRID */
+
+.adb-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fill,minmax(380px,1fr));
+
+    gap:28px;
+}
+
+/* CARD */
+
+.adb-card{
+    background:white;
+
+    border-radius:30px;
+
+    padding:28px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.05);
+
+    transition:.3s;
+}
+
+.adb-card:hover{
+    transform:translateY(-6px);
+}
+
+/* TOP */
+
+.adb-card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+    margin-bottom:24px;
+}
+
+.adb-user-box{
+    display:flex;
+    gap:14px;
+}
+
+.adb-user-avatar{
+    width:56px;
+    height:56px;
+
+    border-radius:18px;
+
+    background:#2563eb;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+    font-weight:700;
+}
+
+.adb-user-name{
+    font-size:20px;
+    color:#111827;
+    margin-bottom:6px;
+}
+
+.adb-user-phone{
+    color:#64748b;
+    font-size:14px;
+}
+
+/* STATUS */
+
+.adb-status-badge{
+    padding:10px 16px;
+
+    border-radius:30px;
+
+    font-size:13px;
+    font-weight:700;
+
+    text-transform:capitalize;
+}
+
+.adb-status-badge.pending{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.adb-status-badge.confirmed{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.adb-status-badge.rejected{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.adb-status-badge.completed{
+    background:#dbeafe;
+    color:#1d4ed8;
+}
+
+/* DETAILS */
+
+.adb-detail-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+
+    margin-bottom:24px;
+}
+
+.adb-detail-item{
+    background:#f8fafc;
+
+    padding:14px 16px;
+
+    border-radius:16px;
+
+    display:flex;
+    justify-content:space-between;
+
+    gap:12px;
+
+    font-size:14px;
+}
+
+/* SERVICE */
+
+.adb-service-box{
+    background:#eef2ff;
+
+    border-radius:22px;
+
+    padding:20px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:24px;
+}
+
+.adb-service-name{
+    font-size:18px;
+    margin-bottom:8px;
+    color:#111827;
+}
+
+.adb-service-price{
+    color:#2563eb;
+    font-weight:700;
+}
+
+.adb-service-tag{
+    background:white;
+
+    padding:10px 14px;
+
+    border-radius:14px;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+/* PROGRESS */
+
+.adb-progress-wrap{
+    margin-bottom:26px;
+}
+
+.adb-progress-line{
+    width:100%;
+    height:10px;
+
+    background:#e2e8f0;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.adb-progress-fill{
+    height:100%;
+}
+
+.adb-progress-fill.pending{
+    width:30%;
+    background:#f59e0b;
+}
+
+.adb-progress-fill.confirmed{
+    width:70%;
+    background:#22c55e;
+}
+
+.adb-progress-fill.completed{
+    width:100%;
+    background:#2563eb;
+}
+
+.adb-progress-fill.rejected{
+    width:100%;
+    background:#ef4444;
+}
+
+/* ACTIONS */
+
+.adb-action-area{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.adb-view-btn{
+    background:#111827;
+    color:white;
+
+    padding:14px 18px;
+
+    border-radius:16px;
+
+    text-decoration:none;
+    text-align:center;
+    font-weight:600;
+}
+
+/* FORM */
+
+.adb-status-form{
+    display:flex;
+    gap:12px;
+}
+
+.adb-select{
+    flex:1;
+
+    border:none;
+    outline:none;
+
+    background:#f8fafc;
+
+    padding:14px;
+
+    border-radius:14px;
+}
+
+.adb-update-btn{
+    border:none;
+
+    background:#2563eb;
+    color:white;
+
+    padding:14px 18px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+    font-weight:600;
+}
+
+/* QUICK ACTIONS */
+
+.adb-quick-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.adb-confirm-btn,
+.adb-reject-btn{
+    width:100%;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.adb-confirm-btn{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.adb-reject-btn{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .adb-topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+    }
+
+    .adb-title{
+        font-size:34px;
+    }
+
+    .adb-grid{
+        grid-template-columns:1fr;
+    }
+
+    .adb-status-form{
+        flex-direction:column;
+    }
+
+}

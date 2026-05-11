@@ -1,0 +1,189 @@
+<%- include("../partials/adminNavbar") %>
+
+<link rel="stylesheet" href="/css/admin-booking-details.css">
+
+<div class="abd-page">
+
+    <!-- TOP -->
+    <div class="abd-top">
+
+        <div>
+
+            <h1 class="abd-title">
+
+                Booking Details
+
+            </h1>
+
+            <p class="abd-subtitle">
+
+                Full customer booking information
+
+            </p>
+
+        </div>
+
+        <a
+            href="/admin/dashboard"
+            class="abd-back-btn"
+        >
+
+            ← Back
+
+        </a>
+
+    </div>
+
+    <!-- CARD -->
+    <div class="abd-card">
+
+        <!-- USER -->
+        <div class="abd-user-section">
+
+            <div class="abd-avatar">
+
+                <%= booking.name.charAt(0) %>
+
+            </div>
+
+            <div>
+
+                <h2 class="abd-user-name">
+
+                    <%= booking.name %>
+
+                </h2>
+
+                <p class="abd-user-phone">
+
+                    📞 <%= booking.phone %>
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- STATUS -->
+        <div class="
+            abd-status
+            <%= booking.status %>
+        ">
+
+            <%= booking.status %>
+
+        </div>
+
+        <!-- GRID -->
+        <div class="abd-grid">
+
+            <div class="abd-info-box">
+
+                <span>
+                    📅 Booking Date
+                </span>
+
+                <strong>
+                    <%= booking.date %>
+                </strong>
+
+            </div>
+
+            <div class="abd-info-box">
+
+                <span>
+                    💳 Payment
+                </span>
+
+                <strong>
+                    <%= booking.paymentStatus || "unpaid" %>
+                </strong>
+
+            </div>
+
+            <div class="abd-info-box">
+
+                <span>
+                    📍 Address
+                </span>
+
+                <strong>
+                    <%= booking.address %>
+                </strong>
+
+            </div>
+
+            <div class="abd-info-box">
+
+                <span>
+                    🛠 Service
+                </span>
+
+                <strong>
+                    <%= booking.serviceName %>
+                </strong>
+
+            </div>
+
+            <div class="abd-info-box">
+
+                <span>
+                    💰 Price
+                </span>
+
+                <strong>
+                    ₹ <%= booking.price %>
+                </strong>
+
+            </div>
+
+            <div class="abd-info-box">
+
+                <span>
+                    🆔 Booking ID
+                </span>
+
+                <strong>
+                    <%= booking._id %>
+                </strong>
+
+            </div>
+
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="abd-actions">
+
+            <!-- CONFIRM -->
+            <form
+                action="/admin/bookings/<%= booking._id %>/confirm"
+                method="POST"
+            >
+
+                <button class="abd-confirm-btn">
+
+                    ✅ Confirm
+
+                </button>
+
+            </form>
+
+            <!-- REJECT -->
+            <form
+                action="/admin/bookings/<%= booking._id %>/reject"
+                method="POST"
+            >
+
+                <button class="abd-reject-btn">
+
+                    ❌ Reject
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

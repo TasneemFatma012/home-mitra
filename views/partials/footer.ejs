@@ -1,0 +1,52 @@
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <!-- BRAND -->
+        <div class="footer-box">
+            <h2>🏠 HomeAssist</h2>
+            <p>Your trusted service marketplace for home repairs, cleaning, and more.</p>
+        </div>
+
+        <!-- QUICK LINKS -->
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <% if(currentUser) { %>
+                <li><a href="/services">Services</a></li>
+                <% } %>
+
+                <% if (!currentUser) { %>
+                    <li><a href="/auth/login">Login</a></li>
+                <% } %>
+
+            </ul>
+        </div>
+
+        <!-- SERVICES -->
+        <div class="footer-box">
+            <h3>Top Services</h3>
+            <ul>
+                <li>Electrician</li>
+                <li>Plumber</li>
+                <li>Cleaning</li>
+                <li>Repair</li>
+            </ul>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="footer-box">
+            <h3>Contact</h3>
+            <p>📍 India</p>
+            <p>📞 +91 98765 43210</p>
+            <p>📧 support@homeassist.com</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 HomeAssist | All Rights Reserved</p>
+    </div>
+
+</footer>

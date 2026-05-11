@@ -1,0 +1,83 @@
+<% layout('layouts/boilerplate') %>
+
+<link rel="stylesheet" href="/css/receipt.css">
+
+<div class="prc-page">
+
+    <% if (!booking) { %>
+
+        <h2>Booking not found</h2>
+
+    <% } else { %>
+
+    <div class="prc-card">
+
+        <!-- SUCCESS -->
+        <div class="prc-success-icon">✅</div>
+
+        <h1 class="prc-title">Payment Successful</h1>
+
+        <p class="prc-subtitle">Your booking has been confirmed</p>
+
+        <!-- RECEIPT -->
+        <div class="prc-receipt-box">
+
+            <div class="prc-row">
+                <span>Receipt ID</span>
+                <strong><%= booking.receiptId || booking._id %></strong>
+            </div>
+
+            <div class="prc-row">
+                <span>Service</span>
+                <strong><%= booking.serviceName %></strong>
+            </div>
+
+            <div class="prc-row">
+                <span>Customer</span>
+                <strong><%= booking.name %></strong>
+            </div>
+
+            <div class="prc-row">
+                <span>Phone</span>
+                <strong><%= booking.phone %></strong>
+            </div>
+
+            <div class="prc-row">
+                <span>Booking Date</span>
+                <strong>
+                    <%= new Date(booking.date).toLocaleString('en-IN') %>
+                </strong>
+            </div>
+
+            <div class="prc-row">
+                <span>Payment Status</span>
+                <strong class="<%= booking.paymentStatus === 'paid' ? 'prc-paid' : 'prc-pending' %>">
+                    <%= booking.paymentStatus.toUpperCase() %>
+                </strong>
+            </div>
+
+            <div class="prc-row total">
+                <span>Total Amount</span>
+                <strong>₹ <%= booking.price %></strong>
+            </div>
+
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="prc-actions">
+
+            <a href="/user/dashboard" class="prc-btn dashboard">
+                Dashboard
+            </a>
+
+            <button onclick="window.print()" class="prc-btn print">
+                Print Receipt
+            </button>
+
+        </div>
+
+    </div>
+
+    <% } %>
+
+</div>

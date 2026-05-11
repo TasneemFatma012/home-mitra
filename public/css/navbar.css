@@ -1,0 +1,199 @@
+/* NAVBAR WRAPPER */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 30px;
+    background: #ffffff;   /* WHITE BACKGROUND */
+    color: #111827;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* optional container if you use nav-container */
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO */
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #111827;
+}
+
+/* NAV LINKS */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* LINK STYLE */
+.nav-links li a {
+    text-decoration: none;
+    color: #111827;
+    font-weight: 500;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* HOVER EFFECT */
+.nav-links li a:hover {
+    color: #4f46e5;
+}
+
+/* UNDERLINE ANIMATION */
+.nav-links li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: #4f46e5;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* BUTTON */
+.btn {
+    background: #4f46e5;
+    padding: 7px 14px;
+    border-radius: 8px;
+    color: white !important;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #3730a3;
+}
+
+/* USER TEXT */
+.user {
+    font-weight: 500;
+    color: #111827;
+}
+
+/* ADMIN NAV (UPDATED WHITE STYLE) */
+.admin-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    color: #111827;
+    padding: 12px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.admin-nav .links a {
+    color: #111827;
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.admin-nav .links a:hover {
+    color: #4f46e5;
+}
+
+/* =========================
+   USER DROPDOWN
+========================= */
+
+.nav-user-dropdown{
+    position:relative;
+    list-style:none;
+}
+
+.nav-user-toggle{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    background:#f1f5f9;
+
+    padding:10px 16px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.nav-user-toggle:hover{
+    background:#e2e8f0;
+}
+
+/* MENU */
+
+.nav-user-menu{
+    position:absolute;
+
+    top:120%;
+    right:0;
+
+    width:240px;
+
+    background:white;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 12px 30px rgba(0,0,0,.08);
+
+    padding:12px;
+
+    display:none;
+
+    z-index:999;
+}
+
+/* SHOW */
+
+.nav-user-dropdown:hover
+.nav-user-menu{
+    display:block;
+}
+
+/* LINKS */
+
+.nav-user-menu a{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    text-decoration:none;
+
+    padding:14px 16px;
+
+    border-radius:14px;
+
+    color:#111827;
+
+    font-weight:500;
+
+    transition:.3s;
+}
+
+.nav-user-menu a:hover{
+    background:#f8fafc;
+}

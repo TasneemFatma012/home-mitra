@@ -1,0 +1,316 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="lsd-page">
+
+    <!-- TOP SECTION -->
+    <div class="lsd-wrapper">
+
+        <!-- IMAGE -->
+        <div class="lsd-image-box">
+
+            <% if(service.image) { %>
+
+                <img
+                    src="<%= service.image %>"
+                    alt="service image"
+                    class="lsd-image"
+                >
+
+            <% } else { %>
+
+                <div class="lsd-no-image">
+
+                    ⚡ No Image
+
+                </div>
+
+            <% } %>
+
+        </div>
+
+        <!-- DETAILS -->
+        <div class="lsd-content">
+
+            <!-- CATEGORY -->
+            <div class="lsd-category-badge">
+
+                <%= service.category %>
+
+            </div>
+
+            <!-- TITLE -->
+            <h1 class="lsd-title">
+
+                <%= service.title %>
+
+            </h1>
+
+            <!-- PRICE -->
+            <div class="lsd-price">
+
+                ₹ <%= service.price %>
+
+            </div>
+
+            <!-- DESCRIPTION -->
+            <div class="lsd-desc-card">
+
+                <h3 class="lsd-desc-title">
+
+                    Description
+
+                </h3>
+
+                <p class="lsd-desc-text">
+
+                    <%= service.description
+                        ? service.description
+                        : "No description available"
+                    %>
+
+                </p>
+
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="lsd-actions">
+
+                <a
+                    href="/book/<%= service._id %>"
+                    class="lsd-book-btn"
+                >
+
+                    Book Now
+
+                </a>
+
+                <a
+                    href="/services"
+                    class="lsd-back-btn"
+                >
+
+                    ⬅ Back
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- REVIEW AREA -->
+    <div class="lsd-review-area">
+
+        <!-- TITLE -->
+        <div class="lsd-review-top">
+
+            <h2 class="lsd-review-heading">
+
+                ⭐ Customer Reviews
+
+            </h2>
+
+        </div>
+
+        <% if(currentUser) { %>
+
+            <!-- REVIEW FORM -->
+            <form
+                action="/reviews/add"
+                method="POST"
+                class="lsd-review-form"
+            >
+
+                <input
+                    type="hidden"
+                    name="serviceId"
+                    value="<%= service._id %>"
+                >
+
+                <!-- STARS -->
+                <div class="lsd-star-rating">
+
+                    <input
+                        type="radio"
+                        name="rating"
+                        value="5"
+                        id="lsd-star5"
+                    >
+
+                    <label for="lsd-star5">★</label>
+
+                    <input
+                        type="radio"
+                        name="rating"
+                        value="4"
+                        id="lsd-star4"
+                    >
+
+                    <label for="lsd-star4">★</label>
+
+                    <input
+                        type="radio"
+                        name="rating"
+                        value="3"
+                        id="lsd-star3"
+                    >
+
+                    <label for="lsd-star3">★</label>
+
+                    <input
+                        type="radio"
+                        name="rating"
+                        value="2"
+                        id="lsd-star2"
+                    >
+
+                    <label for="lsd-star2">★</label>
+
+                    <input
+                        type="radio"
+                        name="rating"
+                        value="1"
+                        id="lsd-star1"
+                    >
+
+                    <label for="lsd-star1">★</label>
+
+                </div>
+
+                <!-- TEXTAREA -->
+                <textarea
+                    name="comment"
+                    placeholder="Write your review..."
+                    class="lsd-review-textarea"
+                    required
+                ></textarea>
+
+                <!-- BUTTON -->
+                <button
+                    type="submit"
+                    class="lsd-review-submit"
+                >
+
+                    Submit Review
+
+                </button>
+
+            </form>
+
+        <% } else { %>
+
+            <p class="lsd-login-text">
+
+                Please
+
+                <a href="/auth/login">
+
+                    login
+
+                </a>
+
+                to write a review
+
+            </p>
+
+        <% } %>
+
+        <!-- REVIEWS -->
+        <div class="lsd-review-grid">
+
+            <% if(!reviews || reviews.length === 0) { %>
+
+                <p class="lsd-no-review">
+
+                    No reviews yet
+
+                </p>
+
+            <% } %>
+
+            <% reviews.forEach(r => { %>
+
+                <div class="lsd-review-card">
+
+                    <!-- TOP -->
+                    <div class="lsd-review-header">
+
+                        <div class="lsd-review-user">
+
+                            👤 <%= r.userName %>
+
+                        </div>
+
+                        <div class="lsd-review-rating">
+
+                            ⭐ <%= r.rating %>/5
+
+                        </div>
+
+                    </div>
+
+                    <!-- COMMENT -->
+                    <p class="lsd-review-comment">
+
+                        <%= r.comment %>
+
+                    </p>
+
+                    <!-- DELETE -->
+                    <% if(
+
+                        currentUser &&
+
+                        (
+                            currentUser.id === r.userId ||
+
+                            currentUser.role === "admin"
+                        )
+
+                    ) { %>
+
+                        <form
+                            action="/reviews/delete"
+                            method="POST"
+                        >
+
+                            <input
+                                type="hidden"
+                                name="id"
+                                value="<%= r._id %>"
+                            >
+
+                            <input
+                                type="hidden"
+                                name="rev"
+                                value="<%= r._rev %>"
+                            >
+
+                            <input
+                                type="hidden"
+                                name="serviceId"
+                                value="<%= service._id %>"
+                            >
+
+                            <button
+                                class="lsd-delete-btn"
+                            >
+
+                                🗑 Delete
+
+                            </button>
+
+                        </form>
+
+                    <% } %>
+
+                </div>
+
+            <% }) %>
+
+        </div>
+
+    </div>
+
+</div>

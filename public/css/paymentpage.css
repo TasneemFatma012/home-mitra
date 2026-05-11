@@ -1,0 +1,366 @@
+/* =========================
+   PAYMENT UI
+========================= */
+
+.lsp-page{
+    min-height:100vh;
+    padding:50px 5%;
+    background:#f4f7fb;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.lsp-payment-card{
+    width:100%;
+    max-width:850px;
+
+    background:white;
+
+    border-radius:36px;
+
+    padding:38px;
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.06);
+}
+
+/* TOP */
+
+.lsp-payment-top{
+    margin-bottom:30px;
+}
+
+.lsp-payment-badge{
+    width:max-content;
+
+    background:#dbeafe;
+    color:#1d4ed8;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-size:14px;
+    font-weight:700;
+
+    margin-bottom:18px;
+}
+
+.lsp-payment-title{
+    font-size:44px;
+    color:#0f172a;
+    margin-bottom:12px;
+}
+
+.lsp-payment-subtitle{
+    color:#64748b;
+    line-height:1.7;
+}
+
+/* SERVICE */
+
+.lsp-service-box{
+    background:#eef2ff;
+
+    border-radius:28px;
+
+    padding:24px;
+
+    display:flex;
+    align-items:center;
+    gap:20px;
+
+    margin-bottom:28px;
+}
+
+.lsp-service-icon{
+    width:74px;
+    height:74px;
+
+    border-radius:24px;
+
+    background:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:34px;
+}
+
+.lsp-service-name{
+    font-size:28px;
+    color:#111827;
+    margin-bottom:8px;
+}
+
+.lsp-service-desc{
+    color:#64748b;
+}
+
+/* DETAILS */
+
+.lsp-details-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:18px;
+
+    margin-bottom:28px;
+}
+
+.lsp-detail-card{
+    background:#f8fafc;
+
+    border-radius:20px;
+
+    padding:22px;
+}
+
+.lsp-detail-card span{
+    display:block;
+    margin-bottom:10px;
+    color:#64748b;
+}
+
+.lsp-detail-card strong{
+    color:#111827;
+}
+
+/* PRICE */
+
+.lsp-price-box{
+    background:#111827;
+    color:white;
+
+    border-radius:28px;
+
+    padding:30px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:28px;
+}
+
+.lsp-price-label{
+    color:#cbd5e1;
+    margin-bottom:10px;
+}
+
+.lsp-price{
+    font-size:42px;
+}
+
+.lsp-pay-btn{
+    border:none;
+
+    background:#22c55e;
+    color:white;
+
+    padding:16px 26px;
+
+    border-radius:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.lsp-pay-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* FEATURES */
+
+.lsp-feature-wrap{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.lsp-feature-item{
+    background:#f8fafc;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    font-weight:600;
+}
+
+/* MODAL */
+
+.lsp-modal{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    z-index:999;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+.lsp-modal-content{
+    width:100%;
+    max-width:480px;
+
+    background:white;
+
+    border-radius:34px;
+
+    padding:38px;
+
+    position:relative;
+
+    animation:lspPop .25s ease;
+}
+
+@keyframes lspPop{
+
+    from{
+        transform:scale(.9);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* CLOSE */
+
+.lsp-close-btn{
+    position:absolute;
+
+    top:18px;
+    right:18px;
+
+    border:none;
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:#f1f5f9;
+
+    cursor:pointer;
+}
+
+/* MODAL */
+
+.lsp-modal-icon{
+    width:82px;
+    height:82px;
+
+    margin:auto;
+
+    border-radius:28px;
+
+    background:#dbeafe;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:42px;
+
+    margin-bottom:24px;
+}
+
+.lsp-modal-title{
+    text-align:center;
+
+    font-size:32px;
+
+    color:#0f172a;
+
+    margin-bottom:14px;
+}
+
+.lsp-modal-subtitle{
+    text-align:center;
+
+    color:#64748b;
+
+    line-height:1.8;
+
+    margin-bottom:28px;
+}
+
+/* SUMMARY */
+
+.lsp-summary-box{
+    background:#f8fafc;
+
+    border-radius:22px;
+
+    padding:22px;
+
+    margin-bottom:24px;
+}
+
+.lsp-summary-row{
+    display:flex;
+    justify-content:space-between;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #e2e8f0;
+}
+
+.lsp-summary-row:last-child{
+    border:none;
+}
+
+/* PAY */
+
+.lsp-razorpay-btn{
+    width:100%;
+
+    border:none;
+
+    background:#2563eb;
+    color:white;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    font-size:16px;
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .lsp-payment-title{
+        font-size:34px;
+    }
+
+    .lsp-price-box{
+        flex-direction:column;
+        gap:18px;
+        align-items:flex-start;
+    }
+
+}

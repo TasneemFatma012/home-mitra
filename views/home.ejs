@@ -1,0 +1,255 @@
+<% layout('layouts/boilerplate') %>
+
+<!-- HERO SECTION -->
+<section class="home-hero">
+
+    <h1 class="home-hero__title">
+        🔧 LocalServe Marketplace
+    </h1>
+
+    <p class="home-hero__subtitle">
+        Find trusted professionals near you
+    </p>
+
+    <!-- SEARCH BAR -->
+    <div class="home-search">
+        <form class="mp-search" method="GET" action="/services">
+
+        <input 
+            type="text"
+             
+            name="q"
+             
+            value="<%= searchQuery %>"
+            placeholder="Search services..."
+        >
+
+        <button>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Search
+        </button>
+    </form>   
+
+    </div>
+
+    <a href="/services" class="home-hero__btn">
+        Explore All Services
+    </a>
+
+</section>
+
+<!-- CATEGORIES -->
+<section class="home-categories-section">
+
+    <h2 class="home-section__title">
+        Browse Categories
+    </h2>
+
+    <div class="home-categories">
+
+        <a href="/services?category=Home Repair">
+             🔧 Home Repair
+        </a>
+
+        <a href="/services?category=IT Service">
+           💻 IT Service
+        </a>
+
+        <a href="/services?category=Cleaning">
+            🧹 Cleaning
+        </a>
+
+        <a href="/services?category=Fitness">
+             🏋️ Fitness
+        </a>
+
+        <a href="/services?category=Wood Work">
+             🪵 Wood Work
+        </a>
+
+    </div>
+
+</section>
+
+<!-- POPULAR SERVICES -->
+<section class="home-container">
+
+    <h2 class="home-section__title">
+        🔥 Popular Services
+    </h2>
+
+    <div class="home-card-grid">
+
+        <% services.slice(0, 10).forEach(service => { %>
+
+            <div class="home-card">
+
+                <div class="home-card__icon">
+                    <i class="fa-solid <%= service.icon || 'fa-tools' %>"></i>
+                </div>
+
+                <h3 class="home-card__title">
+                    <%= service.title %>
+                </h3>
+
+                <p class="home-card__category">
+                    <%= service.category %>
+                </p>
+
+                <p class="home-card__price">
+                    ₹ <%= Number(service.price).toLocaleString("en-IN") %>
+                </p>
+
+                <div class="home-card__rating">
+                    ⭐ 4.8
+                </div>
+
+                <% if(currentUser) { %>
+
+                    <a 
+                        href="/book/<%= service._id %>" 
+                        class="home-card__btn"
+                    >
+                        Book Now
+                    </a>
+
+                <% } else { %>
+
+                    <a 
+                        href="/auth/login" 
+                        class="home-card__btn home-card__btn--login"
+                    >
+                        Login to Book
+                    </a>
+
+                <% } %>
+
+            </div>
+
+        <% }) %>
+
+    </div>
+
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why-us">
+
+    <h2 class="home-section__title">
+        Why Choose Us
+    </h2>
+
+    <div class="why-us-grid">
+
+        <div class="why-card">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <h3>Verified Professionals</h3>
+
+            <p>
+                Trusted and experienced service providers.
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <i class="fa-solid fa-clock"></i>
+
+            <h3>Quick Booking</h3>
+
+            <p>
+                Easy and fast online booking process.
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <i class="fa-solid fa-star"></i>
+
+            <h3>Top Rated Services</h3>
+
+            <p>
+                Highly rated professionals near you.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STATS -->
+<section class="home-stats">
+
+    <div class="stats-card">
+        <h2>500+</h2>
+        <p>Bookings</p>
+    </div>
+
+    <div class="stats-card">
+        <h2>100+</h2>
+        <p>Professionals</p>
+    </div>
+
+    <div class="stats-card">
+        <h2>50+</h2>
+        <p>Services</p>
+    </div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+
+    <h2 class="home-section__title">
+        Customer Reviews
+    </h2>
+
+    <div class="testimonial-grid">
+
+        <div class="testimonial-card">
+
+            <p>
+                "Amazing electrician service and quick response."
+            </p>
+
+            <h4>- Rahul Kumar</h4>
+
+        </div>
+
+        <div class="testimonial-card">
+
+            <p>
+                "Affordable AC repair service. Highly recommended."
+            </p>
+
+            <h4>- Ayesha Khan</h4>
+
+        </div>
+
+        <div class="testimonial-card">
+
+            <p>
+                "Very professional cleaning staff."
+            </p>
+
+            <h4>- Sneha Sharma</h4>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- OFFER BANNER -->
+<section class="offer-banner">
+
+    <h2>
+        🎉 Get 20% OFF on Your First Booking
+    </h2>
+
+</section>
+

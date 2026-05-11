@@ -1,0 +1,53 @@
+.success-container {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    padding: 30px;
+}
+
+.checkmark {
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+
+.card {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.status {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.status.pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status.confirmed {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    background: black;
+    color: white;
+}
+
+.btn.pay {
+    background: #4f46e5;
+}

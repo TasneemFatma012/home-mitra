@@ -1,0 +1,182 @@
+/* =========================
+   PROFILE UI
+========================= */
+
+.upf-page{
+    min-height:100vh;
+    background:#f4f7fb;
+    padding:40px 5%;
+
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:30px;
+}
+/* SIDEBAR */
+.upf-sidebar-card{
+    background:white;
+
+    border-radius:30px;
+
+    padding:30px;
+
+    height:max-content;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.05);
+}
+
+.upf-avatar-wrap{
+    text-align:center;
+}
+
+.upf-avatar{
+    width:110px;
+    height:110px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:42px;
+    font-weight:700;
+
+    margin:auto;
+    margin-bottom:20px;
+}
+
+.upf-user-name{
+    color:#111827;
+    margin-bottom:8px;
+}
+
+.upf-user-role{
+    color:#64748b;
+}
+
+/* STATS */
+
+.upf-stats-grid{
+    display:grid;
+    gap:16px;
+    margin-top:30px;
+}
+
+.upf-stat-card{
+    background:#f8fafc;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    text-align:center;
+}
+
+.upf-stat-card h3{
+    color:#2563eb;
+    margin-bottom:8px;
+}
+
+/* FORM */
+
+.upf-form-card{
+    background:white;
+
+    border-radius:30px;
+
+    padding:35px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.05);
+}
+
+.upf-top{
+    margin-bottom:30px;
+}
+
+.upf-title{
+    font-size:42px;
+    color:#111827;
+    margin-bottom:10px;
+}
+
+.upf-subtitle{
+    color:#64748b;
+}
+
+/* INPUTS */
+
+.upf-form{
+    display:grid;
+    gap:24px;
+}
+
+.upf-input-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.upf-label{
+    margin-bottom:10px;
+    font-weight:600;
+    color:#111827;
+}
+
+.upf-input,
+.upf-textarea{
+    border:none;
+
+    background:#f8fafc;
+
+    border-radius:18px;
+
+    padding:16px;
+
+    font-size:15px;
+
+    outline:none;
+}
+
+.upf-textarea{
+    min-height:120px;
+    resize:none;
+}
+/* BUTTON */
+
+.upf-save-btn{
+    border:none;
+
+    background:#2563eb;
+    color:white;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    font-size:16px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.upf-save-btn:hover{
+    background:#1d4ed8;
+}/* MOBILE */
+
+@media(max-width:900px){
+
+    .upf-page{
+        grid-template-columns:1fr;
+    }
+
+    .upf-title{
+        font-size:34px;
+    }
+
+}

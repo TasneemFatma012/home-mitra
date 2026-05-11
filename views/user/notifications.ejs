@@ -1,0 +1,63 @@
+<% layout('layouts/boilerplate') %>
+
+
+
+<div class="notify-page">
+
+    <div class="notify-top">
+
+        <h1>
+            🔔 Notifications
+        </h1>
+
+    </div>
+
+    <% if(
+        notifications.length === 0
+    ) { %>
+
+        <div class="notify-empty">
+
+            No notifications yet
+
+        </div>
+
+    <% } %>
+
+    <div class="notify-grid">
+
+    <% notifications.forEach(n => { %>
+
+        <div class="notify-card">
+
+            <div class="notify-icon">
+
+                ✅
+
+            </div>
+
+            <div class="notify-content">
+
+                <h3>
+
+                    <%= n.message %>
+
+                </h3>
+
+                <p>
+
+                    <%= new Date(
+                        n.createdAt
+                    ).toLocaleString() %>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    <% }) %>
+
+    </div>
+
+</div>

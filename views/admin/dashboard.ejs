@@ -1,0 +1,389 @@
+<%- include("../partials/adminNavbar") %>
+
+<link rel="stylesheet" href="/css/admindashboard.css">
+
+<div class="adb-page">
+
+    <!-- TOP -->
+    <div class="adb-topbar">
+
+        <div>
+
+            <h1 class="adb-title">
+
+                📊 Admin Dashboard
+
+            </h1>
+
+            <p class="adb-subtitle">
+
+                Manage bookings, payments and services
+
+            </p>
+
+        </div>
+
+        <div class="adb-live-box">
+
+            <span class="adb-live-dot"></span>
+
+            Live Dashboard
+
+        </div>
+
+    </div>
+
+    <!-- STATS -->
+    <div class="adb-stats-grid">
+
+        <!-- TOTAL -->
+        <div class="adb-stat-card adb-total">
+
+            <div class="adb-stat-icon">
+                📦
+            </div>
+
+            <div>
+
+                <h2>
+                    <%= stats.total %>
+                </h2>
+
+                <p>
+                    Total Bookings
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- PENDING -->
+        <div class="adb-stat-card adb-pending">
+
+            <div class="adb-stat-icon">
+                ⏳
+            </div>
+
+            <div>
+
+                <h2>
+                    <%= stats.pending %>
+                </h2>
+
+                <p>
+                    Pending
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- CONFIRMED -->
+        <div class="adb-stat-card adb-confirmed">
+
+            <div class="adb-stat-icon">
+                ✅
+            </div>
+
+            <div>
+
+                <h2>
+                    <%= stats.confirmed %>
+                </h2>
+
+                <p>
+                    Confirmed
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- COMPLETED -->
+        <div class="adb-stat-card adb-completed">
+
+            <div class="adb-stat-icon">
+                🎉
+            </div>
+
+            <div>
+
+                <h2>
+                    <%= stats.completed %>
+                </h2>
+
+                <p>
+                    Completed
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- HEADING -->
+    <div class="adb-section-top">
+
+        <h2 class="adb-section-title">
+
+            All Bookings
+
+        </h2>
+
+    </div>
+
+    <!-- GRID -->
+    <div class="adb-grid">
+
+        <% bookings.forEach(b => { %>
+
+        <div class="adb-card">
+
+            <!-- HEADER -->
+            <div class="adb-card-top">
+
+                <div class="adb-user-box">
+
+                    <div class="adb-user-avatar">
+
+                        <%= b.name.charAt(0) %>
+
+                    </div>
+
+                    <div>
+
+                        <h3 class="adb-user-name">
+
+                            <%= b.name %>
+
+                        </h3>
+
+                        <p class="adb-user-phone">
+
+                            📞 <%= b.phone %>
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- STATUS -->
+                <div class="
+                    adb-status-badge
+                    <%= b.status %>
+                ">
+
+                    <%= b.status %>
+
+                </div>
+
+            </div>
+
+            <!-- DETAILS -->
+            <div class="adb-detail-list">
+
+                <div class="adb-detail-item">
+
+                    <span>
+                        📅 Booking Date
+                    </span>
+
+                    <strong>
+                        <%= b.date %>
+                    </strong>
+
+                </div>
+
+                <div class="adb-detail-item">
+
+                    <span>
+                        📍 Address
+                    </span>
+
+                    <strong>
+                        <%= b.address %>
+                    </strong>
+
+                </div>
+
+                <div class="adb-detail-item">
+
+                    <span>
+                        💳 Payment
+                    </span>
+
+                    <strong>
+                        <%= b.paymentStatus || "unpaid" %>
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <!-- SERVICE -->
+            <div class="adb-service-box">
+
+                <div>
+
+                    <h4 class="adb-service-name">
+
+                        🛠 <%= b.serviceName %>
+
+                    </h4>
+
+                    <p class="adb-service-price">
+
+                        ₹ <%= b.price %>
+
+                    </p>
+
+                </div>
+
+                <div class="adb-service-tag">
+
+                    Service
+
+                </div>
+
+            </div>
+
+            <!-- PROGRESS -->
+            <div class="adb-progress-wrap">
+
+                <div class="adb-progress-line">
+
+                    <div class="
+                        adb-progress-fill
+                        <%= b.status %>
+                    "></div>
+
+                </div>
+
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="adb-action-area">
+
+                <!-- VIEW -->
+                <a
+                    href="/admin/bookings/<%= b._id %>"
+                    class="adb-view-btn"
+                >
+
+                    👁 View Details
+
+                </a>
+
+                <!-- STATUS UPDATE -->
+                <form
+                    action="/admin/bookings/<%= b._id %>/status"
+                    method="POST"
+                    class="adb-status-form"
+                >
+
+                    <select
+                        name="status"
+                        class="adb-select"
+                    >
+
+                        <option
+                            value="pending"
+                            <%= b.status === "pending"
+                            ? "selected" : "" %>
+                        >
+
+                            Pending
+
+                        </option>
+
+                        <option
+                            value="confirmed"
+                            <%= b.status === "confirmed"
+                            ? "selected" : "" %>
+                        >
+
+                            Confirmed
+
+                        </option>
+
+                        <option
+                            value="rejected"
+                            <%= b.status === "rejected"
+                            ? "selected" : "" %>
+                        >
+
+                            Rejected
+
+                        </option>
+
+                        <option
+                            value="completed"
+                            <%= b.status === "completed"
+                            ? "selected" : "" %>
+                        >
+
+                            Completed
+
+                        </option>
+
+                    </select>
+
+                    <button
+                        type="submit"
+                        class="adb-update-btn"
+                    >
+
+                        Update Status
+
+                    </button>
+
+                </form>
+
+                <!-- QUICK ACTIONS -->
+                <div class="adb-quick-actions">
+
+                    <!-- CONFIRM -->
+                    <form
+                        action="/admin/bookings/<%= b._id %>/confirm"
+                        method="POST"
+                    >
+
+                        <button
+                            class="adb-confirm-btn"
+                        >
+
+                            ✅ Confirm
+
+                        </button>
+
+                    </form>
+
+                    <!-- REJECT -->
+                    <form
+                        action="/admin/bookings/<%= b._id %>/reject"
+                        method="POST"
+                    >
+
+                        <button
+                            class="adb-reject-btn"
+                        >
+
+                            ❌ Reject
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <% }) %>
+
+    </div>
+
+</div>
