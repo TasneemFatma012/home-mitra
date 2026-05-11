@@ -1,6 +1,6 @@
-# Home Mitra – Local Service Marketplace
+# HomeAssist– Local Service Marketplace
 
-Home Mitra is a full-stack local service marketplace web application developed to connect users with trusted local service providers such as plumbers, electricians, cleaners, AC repair technicians, carpenters, and more.
+HomeAssist is a full-stack local service marketplace web application developed to connect users with trusted local service providers such as plumbers, electricians, cleaners, AC repair technicians, carpenters, and more.
 
 The platform provides an easy and modern way for users to search, book, and manage local services online.
 
