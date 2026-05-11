@@ -198,6 +198,13 @@
     background:#f8fafc;
 }
 
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: #111827;
+}
+
 
 /* =========================
    MOBILE RESPONSIVE
