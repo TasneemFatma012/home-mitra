@@ -8,7 +8,7 @@ router.get("/receipt/:id", isLoggedIn, async (req, res) => {
 
     try {
 
-        // 🔥 VALIDATION FIX
+        //  VALIDATION FIX
         if (!req.params.id || req.params.id === "undefined") {
             return res.status(400).send("Invalid receipt ID");
         }
@@ -18,14 +18,14 @@ router.get("/receipt/:id", isLoggedIn, async (req, res) => {
             docId: req.params.id
         });
 
-        // 🔥 NULL SAFETY FIX
+        //  NULL SAFETY FIX
         if (!doc?.result) {
             return res.status(404).send("Receipt not found");
         }
 
         const booking = doc.result;
 
-        // 🔥 SECURITY FIX (VERY IMPORTANT)
+        //  SECURITY FIX (VERY IMPORTANT)
         if (booking.userId !== req.session.user.id) {
             return res.status(403).send("Access denied");
         }

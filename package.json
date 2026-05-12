@@ -19,6 +19,7 @@
     "dotenv": "^17.4.2",
     "ejs-mate": "^4.0.0",
     "express": "^5.2.1",
+    "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.19.0",
     "helmet": "^8.1.0",
     "ibm-cloud-sdk-core": "^5.4.12",

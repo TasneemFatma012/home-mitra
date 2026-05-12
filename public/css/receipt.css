@@ -150,6 +150,35 @@
     background:#000;
 }
 
+@media print {
+
+    /* hide everything */
+    body * {
+        visibility: hidden;
+    }
+
+    /* show only receipt */
+    .prc-page, .prc-page * {
+        visibility: visible;
+    }
+
+    .prc-page {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    /* 🚫 FORCE HIDE GLOBAL LAYOUT */
+    .site-navbar,
+    .site-footer,
+    .prc-actions {
+        display: none !important;
+    }
+
+}
+
+
 /* MOBILE */
 
 @media(max-width:700px){

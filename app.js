@@ -21,7 +21,7 @@ const chatbotRoutes = require("./routes/chatbot");
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use(
@@ -105,7 +105,10 @@ app.set("views", path.join(__dirname, "views"));
 // =====================
 // MIDDLEWARES
 // =====================
+const expressLayouts = require("express-ejs-layouts");
 
+app.use(expressLayouts);
+app.set("layout", "layouts/boilerplate");
 
 // SESSION
 
@@ -139,6 +142,7 @@ app.use("/user", require("./routes/user"));
 app.use("/", require("./routes/about"));
 
 app.use("/payment", paymentRoutes);
+app.use("/bookings", require("./routes/receipt"));
 app.use("/api/chatbot", chatbotRoutes);
 // Admin Routes
 
